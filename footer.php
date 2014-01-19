@@ -1,5 +1,10 @@
+<br><br><br>
+<br><br><br>
+<br><br><br>
+
 <div align="center">
-<font size="-2"> <b>Copyright <a href="http://www.cs.columbia.edu/~msz">Marcin Szczodrak</a> 2010-2014</b></font>
+<font size="-2"> <b>Copyright <a href="http://sld.cs.columbia.edu/">System Level Design Group</a> 2010-2014</b></font><br>
+<font size="-2"> <b>Contact <a href="http://www.cs.columbia.edu/~msz">Marcin Szczodrak</a></b></font><br>
 </div>
 
 </div>
