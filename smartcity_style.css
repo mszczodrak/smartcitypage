@@ -1,0 +1,17 @@
+body {
+  font-family: Georgia, "Times New Roman",
+        Times, serif }
+p {
+  font-size: 14px }
+
+li {
+  font-size: 14px }
+
+a:link {
+  color: blue }
+
+a:visited {
+  color: blue }
+
+#content { margin: auto; width: 800px;}
+

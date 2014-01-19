@@ -1,0 +1,94 @@
+
+
+
+Fennec Fox Application Library
+Blink
+Description: Toggles mote led
+Inputs: led, delay
+Parameters
+
+    delay : uint16_t - how often leds toggle (time in ms)
+    led : uint8_t - LEDs value to blink; in TelosB 1->RED, 7->RED+YELLOW+BLUE 
+
+
+
+SendCounter
+Description: Sends increamental counter value
+Inputs: delay, src, dest
+Parameters
+
+    dest : uint16_t - how frequently a new message is send
+    delay : uint16_t - destination address where the message is send
+    src : uint16_t - source address which sends counter 
+
+
+
+SendTemp
+Description: Sends average temperature sensor value reading
+Inputs: window, delay, dest
+Parameters
+
+    delay : uint16_t - how frequently a new message is send
+    dest : uint16_t - destination address where the message is send
+    window : uint8_t - window size for moving window average 
+
+
+
+
+
+Fennec Fox Network Library
+Broadcast
+Description: Broadcast message to everybody in the radio range
+Inputs: none
+
+FixedPath
+Description: routes messages on a fixed 3 hop path
+Inputs: delay, addr1, addr2, addr3, addr4
+Parameters
+
+    delay : uint16_t - delay (ms) before forwarding message
+    addr4 : uint16_t - address of the forth node on the path
+    addr2 : uint16_t - address of the second node on the path
+    addr3 : uint16_t - address of the third node on the path
+    addr1 : uint16_t - address of the first node on the path 
+
+
+
+OneHop
+Description: Broadcasts message to a destination node over one hop
+Inputs: none
+
+
+
+
+
+
+Fennec Fox MAC Library
+Simple
+Description: very primitive MAC protocol; header contains only packet's length
+Inputs: none
+
+SimpleAddr
+Description: primitive MAC protocol; header contains source address, destination address, and packet length
+Inputs: none
+
+IEEE802.15.4
+Description: MAC CSMA-CA protocol following IEEE 802.15.4-2006 standard
+Inputs: use_cca, use_ack, max_cca_retries, max_send_retries, ack_wait_time
+Parameters
+
+    use_ack : bool - should message Acknowledgement be used
+    max_cca_retries : uint8_t - how many time CCA should be done before MAC failes to send
+    max_send_retries : uint8_t - how many time ACK is missed before MAC failes to send
+    use_cca : bool - should Clear Channel Assesment be used
+    ack_wait_time : uint16_t - how long MAC should wait for ACK message 
+
+
+
+
+
+
+Fennec Fox Radio Library
+
+
+

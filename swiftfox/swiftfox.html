@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta name="description" content="Marcin Szczodrak Homepage" />
+<meta name="keywords" content="Marcin,Szczodrak,TinyOS,Embedded,System,Wireless,Network,Columbia,Research,Fennec,Swift,Cape,Low Power" />
+<meta name="author" content="Marcin Szczodrak" />
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<title>Fennec Fox Framework for Wireless Sensor Networks</title>
+<link rel="stylesheet" href="fennec_style.css" type="text/css" />
+
+<!-- GOOGLE TRACKING -->
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9585700-4");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+</head>
+
+<body>
+<div id="wrapper">
+
+<!-- start header -->
+
+<div id="header">
+	<div id="logo">
+<!--
+		<h1><font color="#FFFFFF">ACM SenSys 2012</font></h1>
+		<h2><font color="#AAAAAA">Nov 6-9, 2012&nbsp;&nbsp;&nbsp;&nbsp;Toronto, Canada</font></h2>
+-->
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="home"><a href="index.html">Home</a></li>
+		        <li class="fennec"><a href="fennecfox.html">FennecFox</a></li>
+	        	<li class="swift"><a class="selected" href="swiftfox.html">SwiftFox</a></li>
+		        <li class="support"><a href="support.html">Support</a></li>
+        		<li class="about"><a href="about.html">About</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- end header -->
+
+<!-- start page -->
+<div id="textspace">
+
+<h3>Installation</h3>
+
+<p>
+Swift Fox is the programming language that allows to program logic specifying when and how
+Fennec Fox stack should be reconfigured. Swift Fox is a compiler in itself, but before we
+can use it we need to compile it from a source code.
+</p>
+
+<p>
+Swift Fox source code relies on the following tools that should be avaivale in the system: lex and yacc.
+Before we install Swift Fox, we need to install these tools. For example, in Ubuntu the same tools have different
+names and can be installed in the following way:
+</p>
+
+
+<pre>
+$ sudo apt-get install bison flex
+</pre>
+
+Then we can unpack the Swift Fox source code:
+
+<pre>
+$ tar -zxvf swiftfox.tar.gz
+$ cd swiftfox
+</pre>
+
+and install it by running the install script
+
+<pre>
+$ ./install
+</pre>
+
+<h3>Compiler Architecture</h3>
+
+<p>
+Swift Fox compiler is written in C using Flex and Bison libraries. 
+<a href="http://flex.sourceforge.net/">Flex</a> is a tool for generating
+lexical analyzers and it is an open version of 
+<a href="http://en.wikipedia.org/wiki/Lex_%28software%29">lex</a>.
+Bison is a parser generator and it is a GNU version of 
+<a href="http://en.wikipedia.org/wiki/Yacc">yacc</a>. 
+The generated output of the Swift Fox program is nesC code.
+</p>
+
+<center>
+<img src="./figs/swift_fox_arch.png" height="400"/>
+</center>
+
+
+       
+<h3>Swift Fox Tutorial</h3>
+
+<b>Syntax and Semantics</b>
+Every Swift Fox (SF) program consists of the following sections:
+<ul>
+<li>Definition of configurations
+<li>Definition of events
+<li>Definition of policies
+<li>Initial State
+</ul>
+
+
+<p>
+At minimum, a SF program must include at least one configuration definition
+and the initial state. For example, the code below specifies a configuration
+<b>hello</b> and once started, it runs in this configuration.
+</p>
+
+<pre>
+configuration hello { <b>blink(1, 1024)</b> # application
+&#160;&#160;&#160;nothing # network
+&#160;&#160;&#160;nothing # network addressing
+&#160;&#160;&#160;nothing # qoi
+&#160;&#160;&#160;nothing # mac
+&#160;&#160;&#160;nothing # mac addressing
+&#160;&#160;&#160;nothing # radio
+}
+start hello
+</pre>
+
+<p>Every configuration definition consists of 7 parameters:
+<ul>
+<li>application module name
+<li>network module name
+<li>addressing module name supporting network module
+<li>quality of information module
+<li>mac module name
+<li>addressing module name supporting mac module 
+<li>radio driver module name
+</ul>
+
+The absence of a module is denoted with keyword <b>nothing</b> or <b>none</b>.
+</p>
+
+<b>Compilation and Installation</b>
+
+<p>
+An SF program is stored in a file with extention <b>.sfp</b>. For example,
+the code above could be stored in a file called <b>first_hello.sfp</b>
+</p>
+
+<p>
+To compile a SF program, use <b>sfc</b> command, for example:
+</p>
+
+<pre>
+$ sfc first_hello.sfp
+</pre>
+
+<p>or simply</p>
+
+<pre>
+$ sfc first_hello
+</pre>
+
+<p>
+which compiles SF program from first_hello.sfp file into nesC code
+that is further linked with FF libraries.
+</p>
+
+<p>
+Next, use <b>fennec</b> command to further compile the nesC code into 
+machine code for specific architecture:
+</p>
+
+<pre>
+$ fennec telosb
+</pre>
+
+<p>
+for telosB motes, or for intelMote2
+</p>
+
+<pre>
+$ fennec intelMote2
+</pre>
+
+<p>
+To compile and install of telosb, add the <b>install</b> parameter
+</p>
+
+<pre>
+$ fennec telosb install,13
+</pre>
+
+<p>
+to install on telosb and to give mote address #13
+</p>
+
+<p>
+Instead of running the code on hardware, the code can be simulated
+in CapeFox. To compile the code into CF, pass the <b>cape</b> parameter.
+For example:
+</p>
+
+<pre>
+$ fennec micaz cape
+</pre>
+
+<b>Library Modules</b>
+
+<p>
+Each configuration definition consists of a list of modules, each
+one providing different service and taking various parameters. One can 
+think about those modules as of libraries that exist in other languages. 
+In other languages a programmer can write a complete program without using
+any supporting libraries, or may refer to existing libraries and call
+them when necessary, as long as the libraries names and function signatures
+are known. 
+</p>
+
+<p>
+One way to learn about libraries of modules is to read the FF documentation.
+However, someone may be interested in not only understanding the high-level
+module API, but to also read the underlying nesC code implementing module service.
+To find the location of the module nesC code, edit the file 
+<b>$FENNEC_FOX_LIB/support/sfc/fennec.sfl</b> consisting of a list of
+library modules visible to Swift Fox compiler. A sample few lines of this
+file are pasted below:
+</p>
+
+<pre>
+# Standard Fennec Fox Applications
+use application blink $(FENNEC_FOX_LIB)/Application/Blink
+use application new_app /home/user/NewApp
+
+# Standard Fennec Fox Network Protocols
+use network broadcast $(FENNEC_FOX_LIB)/Network/broadcast
+
+# Addressing
+use address fixed $(FENNEC_FOX_LIB)/Addressing/Fixed
+</pre>
+
+<p>
+For example, the line
+</p>
+
+<pre>
+use application blink $(FENNEC_FOX_LIB)/Application/Blink
+</pre>
+
+<p>
+provides a <b>blink</b> tag for application, which nesC code is stored in 
+<b>$(FENNEC_FOX_LIB)/Application/Blink</b>. More over, SF excepts to
+see the configuration definition of the blink module in file Blink<b>AppC.nc</b>.
+For example, to see the underlying nesC code executing <b>blink</b> module, we could do:
+</p>
+
+<pre>
+$ more $FENNEC_FOX_LIB/Application/Blink/BlinkAppC.nc
+</pre>
+
+<p>
+seeing some fragments of the code:
+</p>
+
+<pre>
+generic configuration BlinkAppC(uint8_t led, uint16_t delay) {
+   provides interface Mgmt;
+   provides interface Module;
+   uses interface NetworkCall;
+   uses interface NetworkSignal;
+}
+
+implementation {
+   components new BlinkAppP(led, delay);
+   Mgmt = BlinkAppP;
+   Module = BlinkAppP;
+   NetworkCall = BlinkAppP;
+...
+</pre>
+
+<p>
+As application modules have extention <b>App</b>, similarly, 
+the <b>broadcast</b> module is expected to be located in 
+broadcast<b>NetC.nc</b> and the <b>fixed</b> module in Fixed<b>AddrC.nc</b>.
+Modules implementing MAC and Radio functionality has extentions <b>Mac</b> 
+and <b>Radio</b> respectively.
+</p>
+
+<p>
+In a similar way a library name is traslated into a location of a nesC code,
+new FF modules can be added to SF library. For example, a FF application called 
+<b>Test</b>, which configuration is stored in file <b>TestAppC.nc</b>, that is located
+somewhere in <b>/home</b>, say in <b>/home/code</b> would require additional
+entry in <b>$(FENNEC_FOX_LIB)/support/sfc/fennec.sfl</b> to be visible in SF program:
+</p>
+
+<pre>
+# Adding new Test Application
+use application <b>newTest</b> /home/code/<b>Test</b>
+</pre>
+
+<p>
+If the Test module, which configuration is stored in /home/code/Test/TestAppC.nc file
+takes 3 parameters, say par1, par2, par3 and is defined as:
+</p>
+
+<pre>
+generic configuration TestAppC(uint8_t par1, uint8_t par2, uint8_t par3) {
+  provides interface Mgmt;
+  provides interface Module;
+...
+</pre>
+
+<p>
+then in SF program we can refer to this module by name <b>newTest</b> followed by
+the values of the 3 parameters. For example, a configuration definition would start as 
+follows:
+</p>
+
+<pre>
+configuration conf_name { <b>newTest(1, 2, 3)</b> # the Test application
+&#160;&#160;&#160;...
+</pre>
+
+<h3>Swift Fox examples</h3>
+
+<b>Null </b><br>
+
+<pre>
+# First empty program - btw, this is a comment ;-)
+configuration null_conf { nothing nothing nothing nothing nothing nothing nothing}
+start null_conf
+</pre>
+
+<p>
+Instead of keeping everything in one line, we can write it like this:
+</p>
+
+<pre>
+configuration null_conf { nothing # application
+   nothing # network
+   nothing # mac
+   nothing # radio
+}
+start null_conf
+</pre>
+
+<b>Simple Blinking</b><br>
+
+<pre>
+configuration hello { <b>blink(1, 1024)</b> # application
+   nothing # network
+   nothing # mac
+   nothing # radio
+}
+start hello
+</pre>
+
+<b>Sending Counter</b><br>
+
+<pre>
+configuration share_counter { <b>counter(2048, 1, 4)</b> # send counter value every 2048ms from node 1 to node 4
+   <b>broadcast()</b> &#160;&#160; # simply broadcast the message
+   <b>ieee802154(1, 1, 4, 4, 200)</b> # use IEEE 802.15.4 MAC with CCA, ACKnowledgement
+   <b>simpleCC2420()</b> # use driver for CC2420
+}
+start share_counter
+</pre>
+
+
+<h3>History</h3>
+
+<p>
+The first idea of a high-level programming language for Fennec Fox platform 
+emerged around December 2009. At this time, Fennec Fox (FF) consisted of only two layers: 
+Application and Network. Around beginning of February 2010, as part of a
+project for class Programming Languages and Translators tought by prof. Alfred Aho,
+a group of four students was formed to design and implement the first 
+prototype of the Swift Fox compiler. Those students were: Marcin Szczodrak,
+Vasileios P. Kemerlis, Xuan Linh Vu, and Yiwei Gu.
+</p>
+
+<p>
+Over the following months, Fennec Fox network protocol stack has been growing,
+untill a point, where the stack consisted of four layers: Application, Network,
+MAC, and Radio. By the end of 2010, Swift Fox was supporting all the layers of
+the Fennec Fox stack, and allowed to specify addressing scheme supporting
+network and MAC protocols. 
+</p>
+
+<p>
+During CPSWeek conference taking place in Chicago (April 2011), Marcin
+discussed with Om the Fennec Fox architecture and the Swift Fox programming
+language. Om has suggested to extend Swift Fox such that each module 
+of a FF configuration could be parameterized. On August 11, 2011, the first
+version of the SF compiler supporting modules parameterization was released. 
+</p>
+
+
+</div>
+<!-- end page -->
+
+
+</div>
+</body>
+</html>
