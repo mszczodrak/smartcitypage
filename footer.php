@@ -10,7 +10,9 @@ and do not necessarily reflect the views of the National Science
 Foundation or any other source of support.
 </font>
 <br><br>
-<font size="-2"> Copyright <a href="http://sld.cs.columbia.edu/">System Level Design Group</a> 2014 </font>
+<font size="-2"> Copyright <a href="http://sld.cs.columbia.edu/">System Level Design Group</a> in 
+<a href="http://www.cs.columbia.edu">Computer Science</a> at 
+<a href="http://www.columbia.edu">Columbia University</a> 2014 </font>
 <br><br>
 <font size="-2"> Contact <a href="http://www.cs.columbia.edu/~msz">Marcin Szczodrak</a></font><br>
 </div>
