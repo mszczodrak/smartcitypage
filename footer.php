@@ -1,9 +1,8 @@
 <br><br><br>
 <br><br><br>
-<br><br><br>
 
 <div align="center">
-<font size=-"1"> <b>Acknowledgments:</b>
+<font size=-"2"> <b>Acknowledgments:</b>
 This material is based upon work partially supported by the National 
 Science Foundation (under Award #644202 and #0931870) and by an ONR 
 Young Investigator Award. Any opinions, findings, and conclusions or 
