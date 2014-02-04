@@ -1,7 +1,7 @@
 <br><br><br>
 <br><br><br>
 <div align="center">
-<font size=-"2"> <b>Acknowledgments:</b>
+<font size="1">Acknowledgments:
 This material is based upon work partially supported by the National 
 Science Foundation (under Award #644202 and #0931870) and by an ONR 
 Young Investigator Award. Any opinions, findings, and conclusions or 
@@ -9,9 +9,10 @@ recommendations expressed in this material are those of the author(s)
 and do not necessarily reflect the views of the National Science 
 Foundation or any other source of support.
 </font>
-<br>
-<font size="-2"> <b>Copyright <a href="http://sld.cs.columbia.edu/">System Level Design Group</a> 2010-2014</b></font><br>
-<font size="-2"> <b>Contact <a href="http://www.cs.columbia.edu/~msz">Marcin Szczodrak</a></b></font><br>
+<br><br>
+<font size="-2"> Copyright <a href="http://sld.cs.columbia.edu/">System Level Design Group</a> 2014 </font>
+<br><br>
+<font size="-2"> Contact <a href="http://www.cs.columbia.edu/~msz">Marcin Szczodrak</a></font><br>
 </div>
 
 </div>
