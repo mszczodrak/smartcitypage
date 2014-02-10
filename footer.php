@@ -1,4 +1,4 @@
-<br><br><br>
+<br>
 <br><br><br>
 <div align="center">
 <font size="1">Acknowledgments:
