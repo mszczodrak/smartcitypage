@@ -29,9 +29,9 @@
 
 	<td colspan="2">
 		<font size="-1">
-		Fennec Fox addresses the need of running multiple heterogenous
+		Fennec Fox addresses the need of running multiple heterogeneous
 		processes on the same Wireless Sensor Network. This can be used
-		to run multiple applications on the same network, or to desing
+		to run multiple applications on the same network, or to design
 		complex applications as a composition of multiple processes.
 		Swift Fox is a programming language to model the execution
 		of the network processes executing on a Fennec Fox system.
@@ -78,7 +78,7 @@
 		Cape Fox is a simulator that allows to test a Wireless Sensor
 		Network system running with Fennec Fox and programmed with
 		Swift Fox. It support developing and testing of Cyber-Physical
-		Systems' applications, by enabling real-time excution with
+		Systems' applications, by enabling real-time execution with
 		real-time sensor and actuator measurements.
 		Open Testbed Framework provides a set of comprehensive tools
 		to deploy, test, and debug an embedded firmware executing
