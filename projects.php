@@ -77,8 +77,8 @@
 		<font size="-1">
 		Cape Fox is a simulator that allows to test a Wireless Sensor
 		Network system running with Fennec Fox and programmed with
-		Swift Fox. It support developing and testing of Cyber-Physical
-		Systems' applications, by enabling real-time execution with
+		Swift Fox. It supports developing and testing of Cyber-Physical
+		Systems' applications by enabling real-time execution with
 		real-time sensor and actuator measurements.
 		Open Testbed Framework provides a set of comprehensive tools
 		to deploy, test, and debug an embedded firmware executing
